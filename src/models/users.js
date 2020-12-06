@@ -76,7 +76,7 @@ localField:'_id'
 // are available on model instances
 UserSchema.methods.genAuthToken=async function(){
 const user=this
-const tkn =jwt.sign({_id:user._id.toString()},'TokenkKeySecrt')
+const tkn =jwt.sign({_id:user._id.toString()},process.env.jsonwebtoken)
 user.tokens= user.tokens.concat({token:tkn})
 await user.save()
 return tkn
