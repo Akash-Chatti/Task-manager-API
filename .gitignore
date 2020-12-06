@@ -1,0 +1,5 @@
+node_modules
+src/db/mongoosepractice.js
+src/MessyIndexFile.js
+config/dev.env
+playground
