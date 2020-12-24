@@ -3,3 +3,4 @@ src/db/mongoosepractice.js
 src/MessyIndexFile.js
 config/dev.env
 playground
+tests/math.test.js
