@@ -18,7 +18,7 @@ next()
     }
     catch(e)
     {
-res.send('Not Authorized.')
+res.status(401).send('Not Authorized.')
     }
 }
 module.exports=auth

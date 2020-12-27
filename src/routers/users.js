@@ -49,7 +49,7 @@ router.post('/users',async (req,res)=>{
      const allowedPropertiesToUpdate  =['name','email','password','age']
      var IsAllowed= updates.every((prop)=>allowedPropertiesToUpdate.includes(prop))
      if(!IsAllowed){
-         return res.status(400).send('Invalid update')
+        return res.status(400).send('Invalid update')
      }
        try
        {
@@ -82,7 +82,7 @@ router.post('/users',async (req,res)=>{
         //    }
 
             await req.user.remove()
-           res.send('deleted: '+ req.user)
+           res.send(req.user)
        }catch(e){
            res.status(500).send()
        }
@@ -95,9 +95,6 @@ router.post('/users',async (req,res)=>{
     }catch(e){
         res.status(400).send()
     }
-
-
-
    })
    router.post('/users/logout',auth,async(req,res)=>{
 try{
@@ -128,7 +125,7 @@ res.status(500).send()
 
     const proPics= multer({
         //dest defines the destination path in local storage 
-        //to store it else where manage it in the fouter functio
+        //to store it else where manage it in the router functio
     //dest:'avatars',
     limits:{
     fileSize:1000000
@@ -150,7 +147,8 @@ res.status(500).send()
         req.user.avatar=buff
         await req.user.save()
         res.send()
-       },(error,req,res,next)=>{
+       },
+       (error,req,res,next)=>{
            res.status(403).send({error:error.message})
            next()
        })

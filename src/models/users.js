@@ -23,7 +23,8 @@ const UserSchema=new mongoose.Schema(
                 
             }
         },
-        lowercase:true
+        lowercase:true,
+        required:true
     
     },
     age:{
